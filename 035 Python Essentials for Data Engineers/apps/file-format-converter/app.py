@@ -38,7 +38,8 @@ def file_converter(src_base_dir, tgt_base_dir, ds_name):
 
     for file in files:
         df = read_csv(file, schemas)
-        file_name = re.split('[/\\\]', file)[-1]
+        #file_name = re.split('[/\\\]', file)[-1]
+        file_name = os.path.basename(file)
         to_json(df, tgt_base_dir, ds_name, file_name)
 
 
