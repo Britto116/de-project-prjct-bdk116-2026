@@ -40,8 +40,8 @@ def db_loader(src_base_dir, db_conn_uri, ds_name):
         for idx, df in enumerate(df_reader):
              if 'order_date' in df.columns:
                 df['order_date'] = pd.to_datetime(df['order_date'])
-        print(f'Populating chunk {idx} of {ds_name}')
-        to_sql(df, db_conn_uri, ds_name)
+             print(f'Populating chunk {idx} of {ds_name}')
+             to_sql(df, db_conn_uri, ds_name)
 
 
 def process_files(ds_names=None):
@@ -66,7 +66,7 @@ def process_files(ds_names=None):
             print(e)
             pass
         finally:
-            print(f'Error Processing {ds_name}')
+            print(f'Successfully processed {ds_name}')
 
 
 if __name__ == '__main__':
