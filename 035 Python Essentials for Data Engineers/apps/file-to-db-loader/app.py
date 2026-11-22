@@ -13,7 +13,7 @@ def get_column_names(schemas, ds_name, sorting_key='column_position'):
 
 
 def read_csv(file, schemas):
-    file_path_list = re.split('[/\\\]', file)
+    file_path_list = re.split(r'[/\\]', file)
     ds_name = file_path_list[-2]
     columns = get_column_names(schemas, ds_name)
     df_reader = pd.read_csv(file, names=columns, chunksize=10000)
