@@ -38,8 +38,10 @@ def db_loader(src_base_dir, db_conn_uri, ds_name):
     for file in files:
         df_reader = read_csv(file, schemas)
         for idx, df in enumerate(df_reader):
-            print(f'Populating chunk {idx} of {ds_name}')
-            to_sql(df, db_conn_uri, ds_name)
+             if 'order_date' in df.columns:
+                df['order_date'] = pd.to_datetime(df['order_date'])
+        print(f'Populating chunk {idx} of {ds_name}')
+        to_sql(df, db_conn_uri, ds_name)
 
 
 def process_files(ds_names=None):
